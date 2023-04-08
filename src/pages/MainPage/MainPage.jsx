@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Message from "../../components/Message/Message";
 
@@ -17,6 +19,15 @@ import {
 } from "./MainPageStyles";
 
 const MainPage = () => {
+    const { isAuth } = useSelector(state => state.login);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!isAuth) {
+            navigate("/login");
+        }
+    }, [isAuth]);
+
     return (
         <MainPageContainer>
             <GameContainer>
