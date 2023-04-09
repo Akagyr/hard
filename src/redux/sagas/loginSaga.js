@@ -8,7 +8,12 @@ import { LOGIN } from "../actionTypes/loginActionTypes.js";
 function* loginSagaFetcher() {
     try {
         const data = yield signInWithPopup(auth, googleAuthProvider);
-        yield put(loginSuccess(data.user));
+        yield put(loginSuccess({
+            id: data.user.uid,
+            name: data.user.displayName,
+            email: data.user.email,
+            photo: data.user.photoURL,
+        }));
     }
     catch(error) {
         yield put(loginFailure(error.code));

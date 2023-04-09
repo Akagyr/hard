@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import { 
-    MessageContainer,
+    MyMessageContainer,
+    OtherMessageContainer,
     MessageUser,
     MessageUserImage,
     MessageUserName,
@@ -9,17 +11,33 @@ import {
     MessageText,
 } from "./Messsage";
 
-const Message = ({userImage, userName, messageText}) => {
+
+const Message = ({userId,  userName, userPhoto, messageText}) => {
+    const {user} = useSelector(state => state.login);
+
     return (
-        <MessageContainer>
-            <MessageUser>
-                <MessageUserImage src={userImage} alt="user" />
-                <MessageUserName>{userName}</MessageUserName>
-            </MessageUser>
-            <MessageTextContainer>
-                <MessageText>{messageText}</MessageText>
-            </MessageTextContainer>
-        </MessageContainer>
+        <>
+            {userId === user.id
+                ?<MyMessageContainer>
+                    <MessageUser>
+                        <MessageUserImage src={userPhoto} alt="user" />
+                        <MessageUserName>{userName}</MessageUserName>
+                    </MessageUser>
+                    <MessageTextContainer>
+                        <MessageText>{messageText}</MessageText>
+                    </MessageTextContainer>
+                </MyMessageContainer>
+                :<OtherMessageContainer>
+                    <MessageUser>
+                        <MessageUserImage src={userPhoto} alt="user" />
+                        <MessageUserName>{userName}</MessageUserName>
+                    </MessageUser>
+                    <MessageTextContainer>
+                        <MessageText>{messageText}</MessageText>
+                    </MessageTextContainer>
+                </OtherMessageContainer>
+            }
+        </>
     );
 }
 

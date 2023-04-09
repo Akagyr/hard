@@ -2,18 +2,22 @@ import styled from "styled-components";
 
 import { blueColor } from "../commonStyles";
 
-const MessageContainer = styled.div`
+const MyMessageContainer = styled.div`
     margin-bottom: 20px;
     width: 60%;
+`;
 
-    &:nth-child(2n + 2) {
-        margin-left: auto;
-    }
+const OtherMessageContainer = styled.div`
+    margin-bottom: 20px;
+    width: 60%;
+    margin-left: auto;
 `;
 
 const MessageUser = styled.div`
     display: flex;
     align-items: center;
+    width: 100%;
+    overflow: hidden;
 `;
 
 const MessageUserImage = styled.img`
@@ -41,7 +45,8 @@ const MessageText = styled.p`
 `;
 
 export {
-    MessageContainer,
+    MyMessageContainer,
+    OtherMessageContainer,
     MessageUser,
     MessageUserImage,
     MessageUserName,

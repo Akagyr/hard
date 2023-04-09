@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Message from "../../components/Message/Message";
+import MessageTools from "../../components/MessageTools/MessageTools";
+import { getMessagesFetch } from "../../redux/slices/messagesSlice";
 
 import { 
     MainPageContainer, 
@@ -11,22 +13,32 @@ import {
     StartButton,
     ChatContainer,
     Messages,
-    MessageTools,
-    MessageInputContainer,
-    MessageInput,
-    MessageButtonContainer,
-    MessageButton,
 } from "./MainPageStyles";
 
 const MainPage = () => {
-    const { isAuth } = useSelector(state => state.login);
+    const { isAuth, user } = useSelector(state => state.login);
+    const { messages } = useSelector(state => state.messages);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getMessagesFetch());
+    }, []);
 
     useEffect(() => {
         if(!isAuth) {
             navigate("/login");
         }
     }, [isAuth]);
+
+    const showMessages = messages.map((item, index) => (
+        <Message 
+            key={index}
+            userId={item.userId}
+            userName={item.userName}
+            userPhoto={item.userPhoto} 
+            messageText={item.message} 
+        />));
 
     return (
         <MainPageContainer>
@@ -36,30 +48,9 @@ const MainPage = () => {
             </GameContainer>
             <ChatContainer>
                 <Messages>
-                    <Message 
-                        userImage="https://i.pinimg.com/280x280_RS/73/b5/93/73b593ab893db7f05bc854708b1f02fc.jpg" 
-                        userName="Alphaplay Альфаплей"
-                        messageText="Hello, World!" 
-                    />
-                    <Message 
-                        userImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDJzEaxLN-jGRYYUO65pWu7Q9GXoNt4LUSSA&usqp=CAU" 
-                        userName="Nickolay Yusov"
-                        messageText="..." 
-                    />
-                    <Message 
-                        userImage="https://i.pinimg.com/280x280_RS/73/b5/93/73b593ab893db7f05bc854708b1f02fc.jpg" 
-                        userName="Alphaplay Альфаплей"
-                        messageText="Hello" 
-                    />
+                    {showMessages}
                 </Messages>
-                <MessageTools>
-                    <MessageInputContainer>
-                        <MessageInput placeholder="Send a message" />
-                    </MessageInputContainer>
-                    <MessageButtonContainer>
-                        <MessageButton>SEND</MessageButton>
-                    </MessageButtonContainer>
-                </MessageTools>
+                <MessageTools newMessageId={messages.length + 1} userId={user.id} userName={user.name} userPhoto={user.photo} />
             </ChatContainer>
         </MainPageContainer>
     );
