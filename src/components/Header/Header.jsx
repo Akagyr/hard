@@ -27,6 +27,6 @@ const Header = () => {
             }
         </HeaderContainer>
     );
-}
+};
 
 export default Header;

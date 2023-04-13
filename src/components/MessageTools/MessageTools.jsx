@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { addMessage } from "../../redux/actions/messagesAction";
+import { addMessage } from "../../redux/actions/messages/messagesAction";
 import { getMessagesFetch } from "../../redux/slices/messagesSlice";
 
 import { 
@@ -14,13 +14,12 @@ import {
 
 
 
-const MessageTools = ({newMessageId, userId, userName, userPhoto}) => {
+const MessageTools = ({userId, userName, userPhoto}) => {
     const messageInputRef = useRef(null);
     const dispatch = useDispatch();
 
     const sendMessage = (message) => {
         dispatch(addMessage({
-            id: newMessageId,
             userId: userId,
             userName: userName,
             userPhoto: userPhoto,
@@ -40,6 +39,6 @@ const MessageTools = ({newMessageId, userId, userName, userPhoto}) => {
             </MessageButtonContainer>
         </MessageToolsContainer>
     );
-}
+};
 
 export default MessageTools;

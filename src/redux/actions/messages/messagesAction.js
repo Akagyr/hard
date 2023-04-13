@@ -1,4 +1,4 @@
-import { ADD_MESSAGE } from "../actionTypes/messagesActionTypes";
+import { ADD_MESSAGE } from "./messagesActionTypes";
 
 export const addMessage = (messageData) => {
     return {

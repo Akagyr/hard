@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import Message from "../../components/Message/Message";
 import MessageTools from "../../components/MessageTools/MessageTools";
 import { getMessagesFetch } from "../../redux/slices/messagesSlice";
+import StartForQuiz from "../../components/StartForQuiz/StartForQuiz";
+import ReadyForQuize from "../../components/ReadyForQuiz/ReadyForQuiz";
+import { getUsers } from "../../redux/actions/users/usersAction";
 
 import { 
     MainPageContainer, 
-    GameContainer, 
-    GameStartText, 
-    StartButton,
+    QuizeContainer,
     ChatContainer,
     Messages,
 } from "./MainPageStyles";
@@ -23,6 +24,7 @@ const MainPage = () => {
 
     useEffect(() => {
         dispatch(getMessagesFetch());
+        dispatch(getUsers());
     }, []);
 
     useEffect(() => {
@@ -42,18 +44,24 @@ const MainPage = () => {
 
     return (
         <MainPageContainer>
-            <GameContainer>
-                <GameStartText>START if you are ready to start Quiz</GameStartText>
-                <StartButton>START</StartButton>
-            </GameContainer>
+            <QuizeContainer>
+                <Routes>
+                    <Route index element={<StartForQuiz userId={user.id} />} />
+                    <Route path="/readyforquize" element={<ReadyForQuize userId={user.id} />} />
+                </Routes>
+            </QuizeContainer>
             <ChatContainer>
                 <Messages>
                     {showMessages}
                 </Messages>
-                <MessageTools newMessageId={messages.length + 1} userId={user.id} userName={user.name} userPhoto={user.photo} />
+                <MessageTools 
+                    userId={user.id} 
+                    userName={user.name} 
+                    userPhoto={user.photo} 
+                />
             </ChatContainer>
         </MainPageContainer>
     );
-}
+};
 
 export default MainPage;

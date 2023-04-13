@@ -1,25 +1,13 @@
 import styled from "styled-components";
 
-import { Button } from "../../components/commonStyles";
-
 const MainPageContainer = styled.div`
     display: flex;
 `;
 
-const GameContainer = styled.div`
+const QuizeContainer = styled.div`
     width: 65%;
     text-align: center;
     padding-top: 40vh;
-`;
-
-const GameStartText = styled.p`
-    color: #fff;
-    margin-bottom: 20px;
-    font-size: 22px;
-`;
-
-const StartButton = styled(Button)`
-    padding: 5px 50px;
 `;
 
 const ChatContainer = styled.div`
@@ -54,9 +42,7 @@ const Messages = styled.div`
 
 export {
     MainPageContainer,
-    GameContainer,
-    GameStartText,
-    StartButton,
+    QuizeContainer,
     ChatContainer,
     Messages,
 };

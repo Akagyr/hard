@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Button } from "../../components/commonStyles";
+import { Button, blueColor } from "../../components/commonStyles";
 
 const LoginContainer = styled.div`
     margin: 0;
@@ -21,7 +21,11 @@ const ButtonLogin = styled(Button)`
     color: #fff;
     display: flex;
     padding: 5px 0 5px 5px;
-    width: 100%
+    width: 100%;
+
+    &:hover {
+        border-color: ${blueColor};
+    }
 `;
 
 const GoogleIcon = styled.img`

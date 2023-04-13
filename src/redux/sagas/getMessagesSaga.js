@@ -11,7 +11,7 @@ function* getMessagesSagaFetcher() {
         querySnapshot.forEach((doc) => {
             messages.push({...doc.data(), id: doc.id});
         });
-        yield put(getMessagesSuccess(messages));
+        yield put(getMessagesSuccess(messages.sort((a, b) => Number(a.id) - Number(b.id))));
     } catch(error) {
         yield put(getMessagesFailure(error));
     }

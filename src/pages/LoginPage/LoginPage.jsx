@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import googleIcon from "../../assets/google_icon.png";
-import { login } from "../../redux/actions/loginAction";
+import { login } from "../../redux/actions/login/loginAction";
 
 import {
     LoginContainer,
@@ -32,6 +32,6 @@ const LoginPage = () => {
             </ButtonLogin>
         </LoginContainer>
     );
-}
+};
 
 export default LoginPage;

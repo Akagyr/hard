@@ -39,6 +39,6 @@ const Message = ({userId,  userName, userPhoto, messageText}) => {
             }
         </>
     );
-}
+};
 
 export default Message;

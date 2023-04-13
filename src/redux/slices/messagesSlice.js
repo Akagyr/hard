@@ -5,7 +5,7 @@ const messagesSlice = createSlice({
     initialState: {
         messages: [],
         isLoading: false,
-        getMessagesError: "",
+        messagesError: "",
     },
     reducers: {
         getMessagesFetch: (state) => {
@@ -16,7 +16,7 @@ const messagesSlice = createSlice({
             state.isLoading = false;
         },
         getMessagesFailure: (state, action) => {
-            state.getMessagesError = action.payload;
+            state.messagesError = action.payload;
             state.isLoading = false;
         },
     },

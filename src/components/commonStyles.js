@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const blueColor = "#56bab7";
-const blueColorHover = "";
 
 const Button = styled.button`
     outline: none;
@@ -19,7 +18,14 @@ const Button = styled.button`
     }
 `;
 
+const QuizeTitleText = styled.p`
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 22px;
+`;
+
 export {
     blueColor,
+    QuizeTitleText,
     Button,
 };

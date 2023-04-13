@@ -1,4 +1,4 @@
-import { LOGIN } from "../actionTypes/loginActionTypes";
+import { LOGIN } from "./loginActionTypes";
 
 export const login = () => {
     return {
