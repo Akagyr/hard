@@ -8,6 +8,7 @@ import { getMessagesFetch } from "../../redux/slices/messagesSlice";
 import StartForQuiz from "../../components/StartForQuiz/StartForQuiz";
 import ReadyForQuize from "../../components/ReadyForQuiz/ReadyForQuiz";
 import { getUsers } from "../../redux/actions/users/usersAction";
+import QuestionsQuiz from "../../components/QuestionsQuiz/QuestionsQuiz";
 
 import { 
     MainPageContainer, 
@@ -16,6 +17,7 @@ import {
     Messages,
 } from "./MainPageStyles";
 
+
 const MainPage = () => {
     const { isAuth, user } = useSelector(state => state.login);
     const { messages } = useSelector(state => state.messages);
@@ -23,15 +25,15 @@ const MainPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getMessagesFetch());
-        dispatch(getUsers());
-    }, []);
-
-    useEffect(() => {
         if(!isAuth) {
             navigate("/login");
         }
     }, [isAuth]);
+
+    useEffect(() => {
+        dispatch(getMessagesFetch());
+        dispatch(getUsers());
+    }, []);
 
     const showMessages = messages.map((item, index) => (
         <Message 
@@ -48,6 +50,7 @@ const MainPage = () => {
                 <Routes>
                     <Route index element={<StartForQuiz userId={user.id} />} />
                     <Route path="/readyforquize" element={<ReadyForQuize userId={user.id} />} />
+                    <Route path="/questions" element={<QuestionsQuiz />} />
                 </Routes>
             </QuizeContainer>
             <ChatContainer>

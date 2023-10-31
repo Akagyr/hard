@@ -6,6 +6,7 @@ import addMessageSaga from "./addMessageSaga";
 import addUserSaga from "./addUserSaga";
 import userReadinessSaga from "./userReadinessSaga";
 import getUsersSaga from "./getUsersSaga";
+import getQuestionsSaga from "./getQuestionsSaga";
 
 function* rootSaga() {
     yield all([
@@ -15,6 +16,7 @@ function* rootSaga() {
         call(addUserSaga),
         call(userReadinessSaga),
         call(getUsersSaga),
+        call(getQuestionsSaga),
     ]);
 }
 

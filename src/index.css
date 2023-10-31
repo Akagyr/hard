@@ -9,6 +9,10 @@ a {
   color: unset;
 }
 
+li {
+  list-style: none;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;

@@ -14,6 +14,6 @@ const useGetUsers = () => {
     }, [users]);
 
     return users;
-}
+};
 
 export default useGetUsers;

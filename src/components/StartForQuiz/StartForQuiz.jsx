@@ -12,7 +12,6 @@ import {
 } from "./StartForQuizStyles";
 
 
-
 const StartForQuiz = ({userId}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -29,7 +28,7 @@ const StartForQuiz = ({userId}) => {
 
     return (
         <>
-            {users.length < 2
+            {users.length > 2
             ?<QuizeTitleText>There are less than 2 users in the room, please wait for the others to connect</QuizeTitleText>
             :<>
                 <QuizeTitleText>START if you are ready to start Quiz</QuizeTitleText>

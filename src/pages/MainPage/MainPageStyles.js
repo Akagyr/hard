@@ -7,7 +7,6 @@ const MainPageContainer = styled.div`
 const QuizeContainer = styled.div`
     width: 65%;
     text-align: center;
-    padding-top: 40vh;
 `;
 
 const ChatContainer = styled.div`

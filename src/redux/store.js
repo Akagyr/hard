@@ -5,6 +5,7 @@ import rootSaga from "./sagas/rootSaga";
 import loginReducer from "./slices/loginSlice";
 import messagesReducer from "./slices/messagesSlice";
 import usersReducer from "./slices/usersSlice";
+import questionsReducer from "./slices/questionsSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
         login: loginReducer,
         messages: messagesReducer,
         users: usersReducer,
+        questions: questionsReducer,
     },
     middleware: [sagaMiddleware],
 });

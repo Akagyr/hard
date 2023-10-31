@@ -5,11 +5,9 @@ import { useDispatch } from "react-redux";
 import { userReadiness } from "../../redux/actions/users/usersAction";
 import { getUsers } from "../../redux/actions/users/usersAction";
 import useGetUsers from "../../hooks/useGetUsers";
+import { QuizeTitleText } from "../commonStyles";
 
-import { 
-    QuizeCancelButton,
-    QuizeTitleText,
-} from "./ReadyForQuizStyles";
+import { QuizeCancelButton } from "./ReadyForQuizStyles";
 
 
 const ReadyForQuiz = ({userId}) => {
@@ -18,10 +16,8 @@ const ReadyForQuiz = ({userId}) => {
     const users = useGetUsers();
 
     useEffect(() => {
-        if(users.find(user => user.userReadiness === false)) {
-            console.log("User is not ready");
-        } else {
-            console.log("Users are ready");
+        if(users.find(user => user.userReadiness === true)) {
+            navigate("../questions");
         }
     }, [users]);
 

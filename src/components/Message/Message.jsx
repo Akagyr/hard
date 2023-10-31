@@ -20,7 +20,7 @@ const Message = ({userId,  userName, userPhoto, messageText}) => {
             {userId === user.id
                 ?<MyMessageContainer>
                     <MessageUser>
-                        <MessageUserImage src={userPhoto} alt="user" />
+                        <MessageUserImage src={userPhoto} alt={userPhoto} />
                         <MessageUserName>{userName}</MessageUserName>
                     </MessageUser>
                     <MessageTextContainer>
@@ -29,7 +29,7 @@ const Message = ({userId,  userName, userPhoto, messageText}) => {
                 </MyMessageContainer>
                 :<OtherMessageContainer>
                     <MessageUser>
-                        <MessageUserImage src={userPhoto} alt="user" />
+                        <MessageUserImage src={userPhoto} alt={userPhoto} />
                         <MessageUserName>{userName}</MessageUserName>
                     </MessageUser>
                     <MessageTextContainer>

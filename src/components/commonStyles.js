@@ -22,6 +22,7 @@ const QuizeTitleText = styled.p`
     color: #fff;
     margin-bottom: 20px;
     font-size: 22px;
+    margin-top: 40vh;
 `;
 
 export {
