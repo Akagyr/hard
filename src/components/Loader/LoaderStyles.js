@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { blueColor } from "../commonStyles";
 
 const LoadingWave = styled.div`
-    margin: 0 auto;
-    width: 300px;
-    height: 100px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    margin-top: 30%;
 `;
 
 const LoadingBar = styled.div`

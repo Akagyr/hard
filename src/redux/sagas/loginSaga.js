@@ -17,6 +17,8 @@ function* loginSagaFetcher() {
         }));
         yield put(addUser({
             userId: data.user.uid,
+            userName: data.user.displayName,
+            userPhoto: data.user.photoURL,
         }));
     }
     catch(error) {

@@ -5,18 +5,18 @@ import { db } from "../../firebase";
 import { usersActionTypes } from "../actions/users/usersActionTypes";
 import { getUsersFailure } from "../slices/usersSlice";
 
-function* updateUserReadinesInFirestore(action) {
+function* updateUserScoreInFirestore(action) {
     try {
         yield updateDoc(doc(db, "users", action.payload.userId), {
-            userReadiness: action.payload.userReadiness,
+            score: action.payload.score,
         });
     } catch(error) {
         yield put(getUsersFailure(error.message));
     }
 }
 
-function* userReadinessSaga() {
-    yield takeEvery(usersActionTypes.USER_READINESS, updateUserReadinesInFirestore);
+function* updateUserScoreSaga() {
+    yield takeEvery(usersActionTypes.UPDATE_USER_SCORE, updateUserScoreInFirestore);
 }
 
-export default userReadinessSaga;
+export default updateUserScoreSaga;

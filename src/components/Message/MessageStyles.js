@@ -2,18 +2,18 @@ import styled from "styled-components";
 
 import { blueColor } from "../commonStyles";
 
-const MyMessageContainer = styled.div`
+const SentMessageContainer = styled.div`
     margin-bottom: 20px;
     width: 60%;
 `;
 
-const OtherMessageContainer = styled.div`
+const ReceivedMessageContainer = styled.div`
     margin-bottom: 20px;
     width: 60%;
     margin-left: auto;
 `;
 
-const MessageUser = styled.div`
+const MessageUserInfo = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
@@ -45,9 +45,9 @@ const MessageText = styled.p`
 `;
 
 export {
-    MyMessageContainer,
-    OtherMessageContainer,
-    MessageUser,
+    SentMessageContainer,
+    ReceivedMessageContainer,
+    MessageUserInfo,
     MessageUserImage,
     MessageUserName,
     MessageTextContainer,

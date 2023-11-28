@@ -8,7 +8,10 @@ import { getUsersFailure } from "../slices/usersSlice";
 function* addUserToFirestore(action) {
     try {
         yield setDoc(doc(db, "users", action.payload.userId), {
+            userName: action.payload.userName,
+            userPhoto: action.payload.userPhoto,
             userReadiness: false,
+            score: 0,
         });
     } catch(error) {
         yield put(getUsersFailure(error.message));

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const blueColor = "#56bab7";
+const disabledColor = "#375e5f";
 
 const Button = styled.button`
     outline: none;
@@ -27,6 +28,7 @@ const QuizeTitleText = styled.p`
 
 export {
     blueColor,
+    disabledColor,
     QuizeTitleText,
     Button,
 };

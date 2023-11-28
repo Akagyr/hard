@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-import { Button, blueColor } from "../commonStyles";
-
-const disabledColor = "#375e5f";
+import { Button, blueColor, disabledColor } from "../commonStyles";
 
 const AnswersLine = styled.ul`
     display: flex;

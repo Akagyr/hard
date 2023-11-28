@@ -13,7 +13,7 @@ function* addMessageToFirestore(action) {
             userPhoto: action.payload.userPhoto,
             message: action.payload.message,
         });
-    } catch(error) {
+    } catch (error) {
         yield put(getMessagesFailure(error.message));
     }
 }

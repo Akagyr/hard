@@ -1,22 +1,25 @@
 import { all, call } from "redux-saga/effects";
 
 import loginSaga from "./loginSaga";
-import getMessagesSaga from "./getMessagesSaga";
 import addMessageSaga from "./addMessageSaga";
 import addUserSaga from "./addUserSaga";
-import userReadinessSaga from "./userReadinessSaga";
-import getUsersSaga from "./getUsersSaga";
-import getQuestionsSaga from "./getQuestionsSaga";
+import updateUserReadinessSaga from "./updateUserReadinessSaga";
+import updateUserScoreSaga from "./updateUserScoreSaga";
+import updateRoomStatusSaga from "./updateRoomStatusSaga";
+import updateRoomCurrentQuestionSaga from "./updateRoomCurrentQuestionSaga";
+import updateRoomFinisedQuizSaga from "./updateRoomFinisedQuizSaga";
+
 
 function* rootSaga() {
     yield all([
         call(loginSaga),
-        call(getMessagesSaga),
         call(addMessageSaga),
         call(addUserSaga),
-        call(userReadinessSaga),
-        call(getUsersSaga),
-        call(getQuestionsSaga),
+        call(updateUserReadinessSaga),
+        call(updateUserScoreSaga),
+        call(updateRoomStatusSaga),
+        call(updateRoomCurrentQuestionSaga),
+        call(updateRoomFinisedQuizSaga),
     ]);
 }
 

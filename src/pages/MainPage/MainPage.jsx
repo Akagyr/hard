@@ -1,48 +1,31 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import Message from "../../components/Message/Message";
-import MessageTools from "../../components/MessageTools/MessageTools";
-import { getMessagesFetch } from "../../redux/slices/messagesSlice";
 import StartForQuiz from "../../components/StartForQuiz/StartForQuiz";
 import ReadyForQuize from "../../components/ReadyForQuiz/ReadyForQuiz";
-import { getUsers } from "../../redux/actions/users/usersAction";
 import QuestionsQuiz from "../../components/QuestionsQuiz/QuestionsQuiz";
+import ResultsQuiz from "../../components/ResultsQuiz/ResultsQuiz";
+import Messages from "../../components/Messages/Messages";
 
-import { 
-    MainPageContainer, 
+import {
+    MainPageContainer,
     QuizeContainer,
     ChatContainer,
-    Messages,
 } from "./MainPageStyles";
 
 
 const MainPage = () => {
     const { isAuth, user } = useSelector(state => state.login);
-    const { messages } = useSelector(state => state.messages);
+    
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!isAuth) {
+        if (!isAuth) {
             navigate("/login");
         }
     }, [isAuth]);
 
-    useEffect(() => {
-        dispatch(getMessagesFetch());
-        dispatch(getUsers());
-    }, []);
-
-    const showMessages = messages.map((item, index) => (
-        <Message 
-            key={index}
-            userId={item.userId}
-            userName={item.userName}
-            userPhoto={item.userPhoto} 
-            messageText={item.message} 
-        />));
 
     return (
         <MainPageContainer>
@@ -50,18 +33,12 @@ const MainPage = () => {
                 <Routes>
                     <Route index element={<StartForQuiz userId={user.id} />} />
                     <Route path="/readyforquize" element={<ReadyForQuize userId={user.id} />} />
-                    <Route path="/questions" element={<QuestionsQuiz />} />
+                    <Route path="/questions" element={<QuestionsQuiz userId={user.id} />} />
+                    <Route path="/result" element={<ResultsQuiz userId={user.id} />} />
                 </Routes>
             </QuizeContainer>
             <ChatContainer>
-                <Messages>
-                    {showMessages}
-                </Messages>
-                <MessageTools 
-                    userId={user.id} 
-                    userName={user.name} 
-                    userPhoto={user.photo} 
-                />
+                <Messages />
             </ChatContainer>
         </MainPageContainer>
     );

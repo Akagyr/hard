@@ -7,15 +7,16 @@ export const addUser = (userData) => {
     };
 };
 
-export const userReadiness = (userData) => {
+export const updateUserReadiness = (updateData) => {
     return {
-        type: usersActionTypes.USER_READINESS,
-        payload: userData,
+        type: usersActionTypes.UPDATE_USER_READINESS,
+        payload: updateData,
     };
 };
 
-export const getUsers = () => {
+export const updateUserScores = (updateData) => {
     return {
-        type: usersActionTypes.GET_USERS,
+        type: usersActionTypes.UPDATE_USER_SCORE,
+        payload: updateData,
     };
 };

@@ -7,6 +7,7 @@ const HeaderContainer = styled.header`
     align-items: center;
     padding: 10px 30px;
     max-height: 10vh;
+    
 `;
 
 const HeaderTitle = styled.h1`

@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { addMessage } from "../../redux/actions/messages/messagesAction";
-import { getMessagesFetch } from "../../redux/slices/messagesSlice";
 
 import { 
     MessageToolsContainer,
@@ -25,7 +24,6 @@ const MessageTools = ({userId, userName, userPhoto}) => {
             message: message,
         }));
         messageInputRef.current.value = null;
-        dispatch(getMessagesFetch());
     };
 
     return (
